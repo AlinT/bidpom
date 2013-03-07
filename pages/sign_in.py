@@ -200,7 +200,7 @@ class SignIn(Base):
         """Clicks 'forgot password' link (visible after entering a valid email)"""
         self.selenium.find_element(*self._forgot_password_locator).click()
         WebDriverWait(self.selenium, self.timeout).until(
-            lambda s: s.find_element(*self._confirm_message_locator).is_displayed())
+            lambda s: 'Confirm your email address' in s.find_element(*self._confirm_message_locator).text)
 
     def click_reset_password(self):
         """Clicks 'reset password' after forgot password and new passwords entered"""
